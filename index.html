@@ -24,22 +24,36 @@ body {
 .card {
   background: white;
   width: 92%;
-  position: relative;
   max-width: 420px;
-  padding: 22px;
+  padding: 24px;
   border-radius: 25px;
   text-align: center;
   box-shadow: 0 15px 30px rgba(0,0,0,0.25);
   animation: pop 0.8s ease;
+  position: relative;
 }
 
 @keyframes pop {
-  from { transform: scale(0.8); opacity: 0; }
+  from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
 
-h1 { color: #ff4d6d; margin-bottom: 5px; }
-p { font-size: 14px; color: #444; }
+h1 {
+  color: #ff4d6d;
+  margin-bottom: 6px;
+}
+
+p {
+  font-size: 14px;
+  color: #444;
+}
+
+.divider {
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ff4d6d, transparent);
+  margin: 12px auto;
+}
 
 .photos {
   display: flex;
@@ -74,6 +88,11 @@ button {
 .yes {
   background: #ff4d6d;
   color: white;
+  transition: transform 0.2s ease;
+}
+
+.yes:hover {
+  transform: scale(1.08);
 }
 
 .no {
@@ -88,19 +107,27 @@ button {
 .gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 12px;
   margin-top: 15px;
-  max-height: 250px;
+  max-height: 260px;
   overflow-y: auto;
 }
 
 .gallery img {
   width: 100%;
-  border-radius: 15px;
+  border-radius: 12px;
   object-fit: cover;
+  padding: 6px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  transform: rotate(-1deg);
 }
 
-.heart, .sparkle {
+.gallery img:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.heart {
   position: absolute;
   animation: floatUp linear infinite;
 }
@@ -119,8 +146,9 @@ button {
 </audio>
 
 <div class="card" id="mainCard">
-  <h1>Hi cutu 💕</h1>
-  <p>I made this instead of texting like a normal nigga </p>
+  <h1>Hi Iqra 💕</h1>
+  <div class="divider"></div>
+  <p>I overthought this… so I made a website 😭</p>
 
   <div class="photos">
     <div class="photo"><img src="image1.jpeg"></div>
@@ -131,23 +159,31 @@ button {
 
   <button class="yes" onclick="sayYes()">YES 💘</button>
   <button class="no" id="noBtn" onmouseover="moveNo()">No 😐</button>
+
+  <p style="font-size:12px; opacity:0.7;">
+    🎵 Lover, You Should’ve Come Over — Jeff Buckley
+  </p>
 </div>
 
 <div class="card" id="finalScreen">
-  <h1>You're stuck with me now💖</h1>
-  <p>I love you so much guga </p>
+  <h1>Okay wow 🥰💖</h1>
+  <div class="divider"></div>
+  <p>I’m really happy it’s you. Always have been.</p>
 
-  <p>💌 my beautiful gal </p>
+  <p>💌 Some of my favorite moments</p>
 
   <div class="gallery">
-    <!-- ADD AS MANY PHOTOS AS YOU WANT -->
     <img src="pic1.jpeg">
     <img src="pic2.jpeg">
     <img src="pic3.jpeg">
     <img src="pic4.jpeg">
   </div>
 
-  <p style="margin-top:10px;">Sooo when can i hit😛 </p>
+  <p style="margin-top:12px;">So… when are we hanging out? 👀</p>
+
+  <p style="font-size:11px; opacity:0.5; margin-top:15px;">
+    Made with late-night overthinking and a lot of feelings 💗
+  </p>
 </div>
 
 <script>
@@ -171,22 +207,20 @@ function sayYes() {
 }
 
 function explode(emoji) {
-  for(let i=0;i<30;i++){
+  for(let i=0;i<25;i++){
     const e = document.createElement("div");
     e.innerHTML = emoji;
     e.className = "heart";
     e.style.left = Math.random()*100+"vw";
     e.style.fontSize = (16 + Math.random()*20)+"px";
-    e.style.animationDuration = (3+Math.random()*3)+"s";
+    e.style.animationDuration = (4+Math.random()*3)+"s";
     document.body.appendChild(e);
-    setTimeout(()=>e.remove(),6000);
+    setTimeout(()=>e.remove(),7000);
   }
 }
 
-setInterval(()=>explode("💗"),1200);
-setInterval(()=>explode("😂"),3500); // funny background touch
+setInterval(()=>explode("💗"),2500);
 </script>
 
 </body>
 </html>
-
