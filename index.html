@@ -41,6 +41,14 @@ body {
 h1 { color: #ff4d6d; margin-bottom: 5px; }
 p { font-size: 14px; color: #444; }
 
+/* Countdown style */
+#countdown {
+  font-size: 13px;
+  color: #ff4d6d;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
 .photos {
   display: flex;
   justify-content: center;
@@ -119,6 +127,10 @@ button {
 </audio>
 
 <div class="card" id="mainCard">
+
+  <!-- COUNTDOWN -->
+  <div id="countdown">Loading countdown… 💘</div>
+
   <h1>Hi cutu 💕</h1>
   <p>I made this instead of texting like a normal nigga </p>
 
@@ -140,7 +152,6 @@ button {
   <p>💌 my beautiful gal </p>
 
   <div class="gallery">
-    <!-- ADD AS MANY PHOTOS AS YOU WANT -->
     <img src="pic1.jpeg">
     <img src="pic2.jpeg">
     <img src="pic3.jpeg">
@@ -157,12 +168,14 @@ document.body.addEventListener("click", () => {
   music.play().catch(()=>{});
 }, { once:true });
 
+// NO button movement
 function moveNo() {
   const btn = document.getElementById("noBtn");
   btn.style.top = Math.random() * 80 + "%";
   btn.style.left = Math.random() * 80 + "%";
 }
 
+// YES button
 function sayYes() {
   document.getElementById("mainCard").style.display = "none";
   document.getElementById("finalScreen").style.display = "block";
@@ -170,6 +183,7 @@ function sayYes() {
   explode("✨");
 }
 
+// Hearts
 function explode(emoji) {
   for(let i=0;i<30;i++){
     const e = document.createElement("div");
@@ -184,9 +198,37 @@ function explode(emoji) {
 }
 
 setInterval(()=>explode("💗"),1200);
-setInterval(()=>explode("😘"),3500); // funny background touch
+setInterval(()=>explode("😂"),3500);
+
+// COUNTDOWN SCRIPT
+function startCountdown() {
+  const now = new Date();
+  let year = now.getFullYear();
+  let valentines = new Date(year, 1, 14); // Feb = 1
+
+  if (now > valentines) {
+    valentines = new Date(year + 1, 1, 14);
+  }
+
+  function update() {
+    const diff = valentines - new Date();
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("countdown").innerHTML =
+      `Valentine’s Day in ${d}d ${h}h ${m}m ${s}s 💘`;
+  }
+
+  update();
+  setInterval(update, 1000);
+}
+
+startCountdown();
 </script>
 
 </body>
 </html>
+
 
