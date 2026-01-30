@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>💘 Iqra, Please Be My Valentine</title>
 
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
 <style>
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', 'Comic Sans MS', sans-serif;
+  font-family: 'Pacifico', cursive;
 }
 
 body {
@@ -38,15 +41,24 @@ body {
   to { transform: scale(1); opacity: 1; }
 }
 
-h1 { color: #ff4d6d; margin-bottom: 5px; }
-p { font-size: 14px; color: #444; }
+h1, h2, p, button, #countdown {
+  font-family: 'Pacifico', cursive;
+}
 
-/* Countdown style */
-#countdown {
-  font-size: 13px;
+h1, h2 {
   color: #ff4d6d;
-  margin-bottom: 8px;
-  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 14px;
+  color: #444;
+}
+
+#countdown {
+  font-size: 15px;
+  color: #ff4d6d;
+  margin-bottom: 10px;
 }
 
 .photos {
@@ -230,5 +242,3 @@ startCountdown();
 
 </body>
 </html>
-
-
