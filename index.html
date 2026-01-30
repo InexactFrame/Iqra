@@ -26,7 +26,6 @@ body {
   width: 92%;
   position: relative;
   max-width: 420px;
-  <p id="countdown"></p>
   padding: 22px;
   border-radius: 25px;
   text-align: center;
@@ -132,6 +131,7 @@ button {
   </div>
 
   <h2>Will you be my Valentine? 🌹</h2>
+  <p id="countdown"></p> <!-- countdown goes here -->
 
   <button class="yes" onclick="sayYes()">YES 💘</button>
   <button class="no" id="noBtn" onmouseover="moveNo()">No 😐</button>
@@ -215,11 +215,10 @@ function explode(emoji) {
 
   countdownEl.innerHTML = `Valentine in ${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
+}
 
 setInterval(updateCountdown, 1000);
 updateCountdown(); // initialize immediately
-}
-
 setInterval(()=>explode("💗"),1500);
 setInterval(()=>explode("😘"),2500); // funny background touch
   
