@@ -26,6 +26,7 @@ body {
   width: 92%;
   position: relative;
   max-width: 420px;
+  <p id="countdown"></p>
   padding: 22px;
   border-radius: 25px;
   text-align: center;
@@ -60,6 +61,9 @@ p { font-size: 14px; color: #444; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+   clip-path: path('M50 15
+                    C35 0, 0 25, 50 100
+                    C100 25, 65 0, 50 15 Z');
 }
 
 button {
@@ -119,8 +123,8 @@ button {
 </audio>
 
 <div class="card" id="mainCard">
-  <h1>Hi cutu 💕</h1>
-  <p>I made this instead of texting like a normal nigga </p>
+  <h1>Hi cutu💕</h1>
+  <p>I made this instead of texting like a normal nigga😅 </p>
 
   <div class="photos">
     <div class="photo"><img src="image1.jpeg"></div>
@@ -134,10 +138,10 @@ button {
 </div>
 
 <div class="card" id="finalScreen">
-  <h1>You're stuck with me now💖</h1>
+  <h1>You're stuck with me now❤️‍🩹</h1>
   <p>I love you so much guga </p>
 
-  <p>💌 my beautiful gal </p>
+  <p>💌 my beautiful gal 💌</p>
 
   <div class="gallery">
     <!-- ADD AS MANY PHOTOS AS YOU WANT -->
@@ -166,8 +170,20 @@ function moveNo() {
 function sayYes() {
   document.getElementById("mainCard").style.display = "none";
   document.getElementById("finalScreen").style.display = "block";
-  explode("💖");
-  explode("✨");
+
+  const emojis = ["❤️","✨","💘","🎉","🌹"];
+  for(let i=0;i<50;i++){
+    const e = document.createElement("div");
+    e.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+    e.className = "heart";
+    e.style.left = Math.random()*100+"vw";
+    e.style.top = Math.random()*100+"vh";
+    e.style.fontSize = (16 + Math.random()*24)+"px";
+    e.style.transform = `rotate(${Math.random()*360}deg)`;
+    e.style.animationDuration = (2+Math.random()*3)+"s";
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),5000);
+  }
 }
 
 function explode(emoji) {
@@ -181,10 +197,32 @@ function explode(emoji) {
     document.body.appendChild(e);
     setTimeout(()=>e.remove(),6000);
   }
+  function updateCountdown() {
+  const countdownEl = document.getElementById("countdown");
+  const valentine = new Date("February 14, 2026 00:00:00").getTime();
+  const now = new Date().getTime();
+  const diff = valentine - now;
+
+  if(diff <= 0){
+    countdownEl.innerHTML = "❤️ Happy Valentine's Day! ❤️";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000*60*60));
+  const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+  countdownEl.innerHTML = `Valentine in ${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
-setInterval(()=>explode("💗"),1200);
-setInterval(()=>explode("😂"),3500); // funny background touch
+setInterval(updateCountdown, 1000);
+updateCountdown(); // initialize immediately
+}
+
+setInterval(()=>explode("💗"),1500);
+setInterval(()=>explode("😘"),2500); // funny background touch
+  
 </script>
 
 </body>
